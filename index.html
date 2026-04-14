@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Bull Soapbox Race | Corrida Maluca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="accessibility-bar" aria-label="Controles de Acessibilidade">
+        <button onclick="changeFontSize('increase')" aria-label="Aumentar fonte">A+</button>
+        <button onclick="changeFontSize('decrease')" aria-label="Diminuir fonte">A-</button>
+        <button onclick="toggleContrast()" aria-label="Alternar Alto Contraste">🌓 Contraste</button>
+    </nav>
+
+    <header class="hero">
+        <nav class="main-nav">
+            <img src="https://www.redbull.com/v3/resources/images/logos/redbull-logo.svg" alt="Red Bull Logo" class="logo">
+        </nav>
+        <div class="hero-content">
+            <h1>Red Bull <span class="highlight">Soapbox Race</span></h1>
+            <p>A corrida mais maluca do mundo está de volta. Criatividade, velocidade e muita gravidade!</p>
+            <a href="#inscricao" class="btn-primary">Inscreva-se Agora</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="galeria" class="reveal-section" aria-labelledby="title-galeria">
+            <h2 id="title-galeria">Máquinas Lendárias</h2>
+            <div id="cars-container" class="grid-container">
+                </div>
+        </section>
+
+        <section id="regras" class="reveal-section" aria-labelledby="title-regras">
+            <h2 id="title-regras">Como Funciona?</h2>
+            <div class="accordion" id="rules-accordion">
+                </div>
+        </section>
+
+        <section id="destaques" class="reveal-section" aria-labelledby="title-destaques">
+            <h2 id="title-destaques">Momentos Épicos</h2>
+            <div class="carousel-wrapper">
+                <div class="carousel" id="main-carousel" role="region" aria-roledescription="carousel">
+                    </div>
+                <div class="carousel-controls">
+                    <button class="prev" aria-label="Slide anterior">❮</button>
+                    <button class="next" aria-label="Próximo slide">❯</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Red Bull - Dê Asas à sua Imaginação.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
