@@ -3,42 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Bull Soapbox Race | Corrida Maluca</title>
+    <title>Red Bull Ladeira Abaixo | A Corrida Mais Maluca do Mundo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="accessibility-bar" aria-label="Controles de Acessibilidade">
-        <button onclick="changeFontSize('increase')" aria-label="Aumentar fonte">A+</button>
-        <button onclick="changeFontSize('decrease')" aria-label="Diminuir fonte">A-</button>
+        <button onclick="changeFontSize('increase')" aria-label="Aumentar tamanho da fonte">A+</button>
+        <button onclick="changeFontSize('decrease')" aria-label="Diminuir tamanho da fonte">A-</button>
         <button onclick="toggleContrast()" aria-label="Alternar Alto Contraste">🌓 Contraste</button>
     </nav>
 
     <header class="hero">
         <nav class="main-nav">
-            <img src="https://www.redbull.com/v3/resources/images/logos/redbull-logo.svg" alt="Red Bull Logo" class="logo">
+            <img src="https://www.redbull.com/v3/resources/images/logos/redbull-logo.svg" alt="Logo Red Bull" class="logo">
         </nav>
         <div class="hero-content">
-            <h1>Red Bull <span class="highlight">Soapbox Race</span></h1>
-            <p>A corrida mais maluca do mundo está de volta. Criatividade, velocidade e muita gravidade!</p>
-            <a href="#inscricao" class="btn-primary">Inscreva-se Agora</a>
+            <h1>Red Bull <span class="highlight">Ladeira Abaixo</span></h1>
+            <p>Criatividade, velocidade e muita gravidade! Junte sua equipe e construa o carrinho mais louco da história.</p>
+            <a href="https://www.redbull.com/br-pt/tags/soap-box-race" target="_blank" rel="noopener noreferrer" class="btn-primary">Site Oficial e Inscrições</a>
         </div>
     </header>
 
     <main>
-        <section id="galeria" class="reveal-section" aria-labelledby="title-galeria">
-            <h2 id="title-galeria">Máquinas Lendárias</h2>
-            <div id="cars-container" class="grid-container">
-                </div>
-        </section>
-
-        <section id="regras" class="reveal-section" aria-labelledby="title-regras">
-            <h2 id="title-regras">Como Funciona?</h2>
-            <div class="accordion" id="rules-accordion">
-                </div>
-        </section>
-
         <section id="destaques" class="reveal-section" aria-labelledby="title-destaques">
-            <h2 id="title-destaques">Momentos Épicos</h2>
+            <h2 id="title-destaques">Momentos Épicos nas Ladeiras</h2>
             <div class="carousel-wrapper">
                 <div class="carousel" id="main-carousel" role="region" aria-roledescription="carousel">
                     </div>
@@ -48,10 +36,29 @@
                 </div>
             </div>
         </section>
+
+        <section id="regras" class="reveal-section" aria-labelledby="title-regras">
+            <h2 id="title-regras">Como Funciona o Ladeira Abaixo?</h2>
+            <div class="accordion" id="rules-accordion">
+                </div>
+        </section>
+
+        <section id="galeria" class="reveal-section" aria-labelledby="title-galeria">
+            <h2 id="title-galeria">Máquinas Lendárias (Hall da Fama)</h2>
+            <div id="cars-container" class="grid-container">
+                </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.redbull.com/br-pt/galleries/os-grandes-capotes-do-red-bull-soapbox-gallery-c3" target="_blank" rel="noopener noreferrer" class="btn-secondary">Ver mais no site da Red Bull</a>
+            </div>
+        </section>
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2024 Red Bull - Dê Asas à sua Imaginação.</p>
+        <p>&copy; 2026 Red Bull. Esta é uma página de demonstração.</p>
+        <div class="footer-links">
+            <a href="https://www.redbull.com/br-pt/" target="_blank" rel="noopener noreferrer">Red Bull Brasil</a> | 
+            <a href="https://www.redbull.com/br-pt/tags/soap-box-race" target="_blank" rel="noopener noreferrer">Página do Evento</a>
+        </div>
     </footer>
 
     <script src="script.js"></script>
