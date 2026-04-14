@@ -1,107 +1,115 @@
-// --- DATA: Conteúdo Dinâmico ---
-const CARS_DATA = [
-    { title: "O Pão de Queijo Voador", desc: "Direto de MG para a rampa.", img: "https://picsum.photos/400/300?random=1" },
-    { title: "Bananeira Atômica", desc: "Potássio puro na descida.", img: "https://picsum.photos/400/300?random=2" },
-    { title: "Chinelo de Pai", desc: "Ninguém escapa dessa velocidade.", img: "https://picsum.photos/400/300?random=3" }
+/* ================================
+   DADOS DINÂMICOS
+================================ */
+const coffees = [
+    { name: "Espresso", desc: "Café forte e concentrado." },
+    { name: "Latte", desc: "Café com leite e espuma." },
+    { name: "Cappuccino", desc: "Equilíbrio entre café, leite e espuma." }
 ];
 
-const RULES_DATA = [
-    { title: "Design", content: "Seu veículo deve ser movido apenas pela gravidade e imaginação." },
-    { title: "Segurança", content: "Capacetes são obrigatórios. Freios funcionais são... recomendados." },
-    { title: "Showmanship", content: "Não basta ser rápido, tem que dar espetáculo no palco!" }
+const images = [
+    "https://images.unsplash.com/photo-1511920170033-f8396924c348",
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93",
+    "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
 ];
 
-// --- RENDERIZADORES ---
-function initApp() {
-    renderCards();
-    renderAccordion();
-    setupCarousel();
-    initScrollReveal();
-}
+const faqs = [
+    { q: "Qual café é mais forte?", a: "O espresso é o mais concentrado." },
+    { q: "Cappuccino tem chocolate?", a: "Pode ter, dependendo da receita." }
+];
 
-function renderCards() {
-    const container = document.getElementById('cars-container');
-    container.innerHTML = CARS_DATA.map(car => `
-        <article class="card">
-            <img src="${car.img}" alt="${car.title}" style="width:100%">
-            <div style="padding: 1rem">
-                <h3>${car.title}</h3>
-                <p>${car.desc}</p>
-            </div>
-        </article>
-    `).join('');
-}
+/* ================================
+   RENDERIZAÇÃO DINÂMICA
+================================ */
+const coffeeContainer = document.getElementById("coffeeContainer");
 
-function renderAccordion() {
-    const container = document.getElementById('rules-accordion');
-    container.innerHTML = RULES_DATA.map((rule, index) => `
-        <div class="accordion-item">
-            <button class="accordion-header" onclick="toggleAccordion(${index})">
-                ${rule.title}
-            </button>
-            <div class="accordion-content" id="content-${index}">
-                <p>${rule.content}</p>
-            </div>
-        </div>
-    `).join('');
-}
+coffees.forEach(c => {
+    const card = document.createElement("article");
+    card.classList.add("card", "reveal");
 
-// --- FUNCIONALIDADES ---
+    card.innerHTML = `
+        <h3>${c.name}</h3>
+        <p>${c.desc}</p>
+    `;
 
-// Acessibilidade: Fonte
-let currentFontSize = 16;
-function changeFontSize(action) {
-    currentFontSize = action === 'increase' ? currentFontSize + 2 : currentFontSize - 2;
-    document.documentElement.style.setProperty('--font-base', currentFontSize + 'px');
-}
+    coffeeContainer.appendChild(card);
+});
 
-// Acessibilidade: Contraste
-function toggleContrast() {
-    document.body.classList.toggle('high-contrast');
-}
+/* ================================
+   CARROSSEL
+================================ */
+const track = document.getElementById("carouselTrack");
 
-// Acordeão
-function toggleAccordion(index) {
-    const contents = document.querySelectorAll('.accordion-content');
-    contents[index].classList.toggle('active');
-}
+images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Imagem de café";
+    track.appendChild(img);
+});
 
-// Scroll Reveal Simplificado com Intersection Observer
-function initScrollReveal() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
+let index = 0;
 
-    document.querySelectorAll('.reveal-section').forEach(section => observer.observe(section));
-}
+document.querySelector(".next").onclick = () => {
+    index++;
+    track.style.transform = `translateX(-${index * 220}px)`;
+};
 
-// Carrossel Simples
-function setupCarousel() {
-    const carousel = document.getElementById('main-carousel');
-    let index = 0;
-    
-    // Injeta itens no carrossel
-    carousel.innerHTML = [1,2,3].map(i => `
-        <div class="carousel-item">
-            <div style="background:var(--primary); height:300px; display:flex; align-items:center; justify-content:center; color:white; border-radius:var(--radius)">
-                <h2>Destaque #${i}</h2>
-            </div>
-        </div>
-    `).join('');
+document.querySelector(".prev").onclick = () => {
+    index = Math.max(index - 1, 0);
+    track.style.transform = `translateX(-${index * 220}px)`;
+};
 
-    document.querySelector('.next').addEventListener('click', () => {
-        index = (index + 1) % 3;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
+/* ================================
+   ACCORDION
+================================ */
+const accordionContainer = document.getElementById("accordionContainer");
+
+faqs.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("accordion-item");
+
+    div.innerHTML = `
+        <div class="accordion-header">${item.q}</div>
+        <div class="accordion-content">${item.a}</div>
+    `;
+
+    div.querySelector(".accordion-header").onclick = () => {
+        const content = div.querySelector(".accordion-content");
+        content.style.display = content.style.display === "block" ? "none" : "block";
+    };
+
+    accordionContainer.appendChild(div);
+});
+
+/* ================================
+   ACESSIBILIDADE
+================================ */
+let fontSize = 16;
+
+document.getElementById("increaseFont").onclick = () => {
+    fontSize += 2;
+    document.body.style.fontSize = fontSize + "px";
+};
+
+document.getElementById("decreaseFont").onclick = () => {
+    fontSize -= 2;
+    document.body.style.fontSize = fontSize + "px";
+};
+
+document.getElementById("toggleContrast").onclick = () => {
+    document.body.classList.toggle("high-contrast");
+};
+
+/* ================================
+   SCROLL REVEAL
+================================ */
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 50) {
+            el.classList.add("active");
+        }
     });
-
-    document.querySelector('.prev').addEventListener('click', () => {
-        index = (index - 1 + 3) % 3;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-    });
-}
-
-window.onload = initApp;
+});
