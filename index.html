@@ -1,64 +1,62 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Bull Ladeira Abaixo | A Corrida Mais Maluca do Mundo</title>
+    <title>Tipos de Café</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <nav class="accessibility-bar" aria-label="Controles de Acessibilidade">
-        <button onclick="changeFontSize('increase')" aria-label="Aumentar tamanho da fonte">A+</button>
-        <button onclick="changeFontSize('decrease')" aria-label="Diminuir tamanho da fonte">A-</button>
-        <button onclick="toggleContrast()" aria-label="Alternar Alto Contraste">🌓 Contraste</button>
-    </nav>
 
-    <header class="hero">
-        <nav class="main-nav">
-            <img src="https://www.redbull.com/v3/resources/images/logos/redbull-logo.svg" alt="Logo Red Bull" class="logo">
+<body>
+    <!-- HEADER -->
+    <header role="banner">
+        <h1>☕ Guia dos Tipos de Café</h1>
+
+        <nav aria-label="Navegação principal">
+            <button id="increaseFont">A+</button>
+            <button id="decreaseFont">A-</button>
+            <button id="toggleContrast">Alto Contraste</button>
         </nav>
-        <div class="hero-content">
-            <h1>Red Bull <span class="highlight">Ladeira Abaixo</span></h1>
-            <p>Criatividade, velocidade e muita gravidade! Junte sua equipe e construa o carrinho mais louco da história.</p>
-            <a href="https://www.redbull.com/br-pt/tags/soap-box-race" target="_blank" rel="noopener noreferrer" class="btn-primary">Site Oficial e Inscrições</a>
-        </div>
     </header>
 
-    <main>
-        <section id="destaques" class="reveal-section" aria-labelledby="title-destaques">
-            <h2 id="title-destaques">Momentos Épicos nas Ladeiras</h2>
-            <div class="carousel-wrapper">
-                <div class="carousel" id="main-carousel" role="region" aria-roledescription="carousel">
-                    </div>
-                <div class="carousel-controls">
-                    <button class="prev" aria-label="Slide anterior">❮</button>
-                    <button class="next" aria-label="Próximo slide">❯</button>
-                </div>
+    <!-- MAIN -->
+    <main role="main">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="hero-title">
+            <h2 id="hero-title">Descubra os sabores do café</h2>
+            <p>Conheça os principais tipos de café e suas características únicas.</p>
+        </section>
+
+        <!-- CARDS DINÂMICOS -->
+        <section id="coffee-list" aria-labelledby="coffee-title">
+            <h2 id="coffee-title">Tipos de Café</h2>
+            <div class="grid" id="coffeeContainer"></div>
+        </section>
+
+        <!-- CARROSSEL -->
+        <section aria-labelledby="carousel-title">
+            <h2 id="carousel-title">Galeria de Cafés</h2>
+
+            <div class="carousel" aria-roledescription="carousel">
+                <button class="prev" aria-label="Anterior">◀</button>
+                <div class="carousel-track" id="carouselTrack"></div>
+                <button class="next" aria-label="Próximo">▶</button>
             </div>
         </section>
 
-        <section id="regras" class="reveal-section" aria-labelledby="title-regras">
-            <h2 id="title-regras">Como Funciona o Ladeira Abaixo?</h2>
-            <div class="accordion" id="rules-accordion">
-                </div>
+        <!-- ACORDEÃO -->
+        <section aria-labelledby="faq-title">
+            <h2 id="faq-title">Curiosidades</h2>
+
+            <div class="accordion" id="accordionContainer"></div>
         </section>
 
-        <section id="galeria" class="reveal-section" aria-labelledby="title-galeria">
-            <h2 id="title-galeria">Máquinas Lendárias (Hall da Fama)</h2>
-            <div id="cars-container" class="grid-container">
-                </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://www.redbull.com/br-pt/galleries/os-grandes-capotes-do-red-bull-soapbox-gallery-c3" target="_blank" rel="noopener noreferrer" class="btn-secondary">Ver mais no site da Red Bull</a>
-            </div>
-        </section>
     </main>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 Red Bull. Esta é uma página de demonstração.</p>
-        <div class="footer-links">
-            <a href="https://www.redbull.com/br-pt/" target="_blank" rel="noopener noreferrer">Red Bull Brasil</a> | 
-            <a href="https://www.redbull.com/br-pt/tags/soap-box-race" target="_blank" rel="noopener noreferrer">Página do Evento</a>
-        </div>
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p>© 2026 - Guia do Café</p>
     </footer>
 
     <script src="script.js"></script>
