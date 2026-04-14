@@ -1,94 +1,130 @@
-/* --- DESIGN SYSTEM & VARS --- */
+/* ================================
+   VARIÁVEIS (DESIGN SYSTEM)
+================================ */
 :root {
-    --primary: #001e62;
-    --secondary: #ed1c24;
-    --accent: #ffcc00;
-    --bg-light: #f4f4f4;
-    --text-dark: #111;
-    --text-light: #fff;
+    --primary: #6f4e37;
+    --secondary: #c4a484;
+    --bg: #f5f5f5;
+    --text: #222;
     --radius: 12px;
-    --gap: 1.5rem;
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    --font-base: 16px;
+    --spacing: 1rem;
 }
 
-/* --- MODO ALTO CONTRASTE --- */
+/* ================================
+   RESET E BASE
+================================ */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+/* ================================
+   MODO ALTO CONTRASTE
+   (Edite cores aqui)
+================================ */
 body.high-contrast {
-    --primary: #000;
-    --secondary: #ffff00;
-    --accent: #ffff00;
-    --bg-light: #000;
-    --text-dark: #fff;
-    --text-light: #ffff00;
+    --bg: #000;
+    --text: #fff;
+    --primary: #ff0;
 }
 
-/* --- RESET & BASE --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: var(--font-base); scroll-behavior: smooth; }
-body { 
-    font-family: 'Segoe UI', Roboto, sans-serif; 
-    background-color: var(--bg-light); 
-    color: var(--text-dark);
-    line-height: 1.6;
+/* ================================
+   HEADER
+================================ */
+header {
+    background: var(--primary);
+    color: white;
+    padding: var(--spacing);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-/* --- ACESSIBILIDADE --- */
-.accessibility-bar {
-    position: sticky; top: 0; z-index: 1000;
-    background: var(--primary); padding: 0.5rem;
-    display: flex; gap: 10px; justify-content: flex-end;
-}
-.accessibility-bar button {
-    cursor: pointer; padding: 5px 10px; border-radius: 4px; border: 1px solid var(--text-light);
-}
-
-/* --- LAYOUT GRID (MODULAR) --- */
-/* Mude aqui para alterar o comportamento das colunas */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--gap);
+/* ================================
+   HERO
+================================ */
+.hero {
     padding: 2rem;
+    text-align: center;
 }
 
+/* ================================
+   GRID DE CARDS
+   (Edite colunas aqui)
+================================ */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CARD */
 .card {
-    background: var(--text-light);
+    background: white;
+    padding: var(--spacing);
     border-radius: var(--radius);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ================================
+   CARROSSEL
+================================ */
+.carousel {
+    display: flex;
+    align-items: center;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: var(--transition);
+    padding: var(--spacing);
 }
-.card:hover { transform: translateY(-10px); }
 
-/* --- CARROSSEL --- */
-.carousel-wrapper { position: relative; overflow: hidden; padding: 2rem; }
-.carousel { display: flex; transition: transform 0.5s ease; }
-.carousel-item { min-width: 100%; padding: 1rem; }
-
-/* --- ACORDEÃO --- */
-.accordion-item { border-bottom: 1px solid #ccc; margin-bottom: 0.5rem; }
-.accordion-header { 
-    width: 100%; padding: 1rem; text-align: left; 
-    background: var(--primary); color: white; cursor: pointer;
-    border: none; font-weight: bold;
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.3s;
 }
-.accordion-content { 
-    padding: 1rem; display: none; background: white; 
-}
-.accordion-content.active { display: block; }
 
-/* --- ANIMAÇÃO DE SCROLL --- */
-.reveal-section {
+.carousel img {
+    width: 200px;
+    border-radius: var(--radius);
+}
+
+/* ================================
+   ACCORDION
+================================ */
+.accordion-item {
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: var(--spacing);
+    background: var(--secondary);
+}
+
+.accordion-content {
+    display: none;
+    padding: var(--spacing);
+}
+
+/* ================================
+   SCROLL REVEAL (ANIMAÇÕES)
+================================ */
+.reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
 }
-.reveal-section.visible {
+
+.reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
 }
