@@ -1,0 +1,94 @@
+/* --- DESIGN SYSTEM & VARS --- */
+:root {
+    --primary: #001e62;
+    --secondary: #ed1c24;
+    --accent: #ffcc00;
+    --bg-light: #f4f4f4;
+    --text-dark: #111;
+    --text-light: #fff;
+    --radius: 12px;
+    --gap: 1.5rem;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --font-base: 16px;
+}
+
+/* --- MODO ALTO CONTRASTE --- */
+body.high-contrast {
+    --primary: #000;
+    --secondary: #ffff00;
+    --accent: #ffff00;
+    --bg-light: #000;
+    --text-dark: #fff;
+    --text-light: #ffff00;
+}
+
+/* --- RESET & BASE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-base); scroll-behavior: smooth; }
+body { 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    background-color: var(--bg-light); 
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- ACESSIBILIDADE --- */
+.accessibility-bar {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--primary); padding: 0.5rem;
+    display: flex; gap: 10px; justify-content: flex-end;
+}
+.accessibility-bar button {
+    cursor: pointer; padding: 5px 10px; border-radius: 4px; border: 1px solid var(--text-light);
+}
+
+/* --- LAYOUT GRID (MODULAR) --- */
+/* Mude aqui para alterar o comportamento das colunas */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--gap);
+    padding: 2rem;
+}
+
+.card {
+    background: var(--text-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: var(--transition);
+}
+.card:hover { transform: translateY(-10px); }
+
+/* --- CARROSSEL --- */
+.carousel-wrapper { position: relative; overflow: hidden; padding: 2rem; }
+.carousel { display: flex; transition: transform 0.5s ease; }
+.carousel-item { min-width: 100%; padding: 1rem; }
+
+/* --- ACORDEÃO --- */
+.accordion-item { border-bottom: 1px solid #ccc; margin-bottom: 0.5rem; }
+.accordion-header { 
+    width: 100%; padding: 1rem; text-align: left; 
+    background: var(--primary); color: white; cursor: pointer;
+    border: none; font-weight: bold;
+}
+.accordion-content { 
+    padding: 1rem; display: none; background: white; 
+}
+.accordion-content.active { display: block; }
+
+/* --- ANIMAÇÃO DE SCROLL --- */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+}
